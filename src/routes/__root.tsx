@@ -7,10 +7,9 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -37,9 +36,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -79,12 +75,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "KilimoIQ" },
       { name: "description", content: "KilimoIQ is an AI-powered agricultural intelligence platform designed to empower farmers, buyers, agribusinesses, cooperatives, and agricultural stakeholders" },
-      { name: "author", content: "Lovable" },
+      { name: "author", content: "KilimoIQ" },
       { property: "og:title", content: "KilimoIQ" },
       { property: "og:description", content: "KilimoIQ is an AI-powered agricultural intelligence platform designed to empower farmers, buyers, agribusinesses, cooperatives, and agricultural stakeholders" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@KilimoIQ" },
       { name: "twitter:title", content: "KilimoIQ" },
       { name: "twitter:description", content: "KilimoIQ is an AI-powered agricultural intelligence platform designed to empower farmers, buyers, agribusinesses, cooperatives, and agricultural stakeholders" },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/jXxuAlbOgKb58mTy2Xpxws39NgL2/social-images/social-1781007957269-KQ-logo.webp" },
